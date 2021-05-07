@@ -1,5 +1,7 @@
 package sample;
 
+import controller.Template_Controller;
+import data.Template_data;
 import data.Variable_data;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -85,6 +87,68 @@ public class Controller {
         //add your data to the table here.
         var_table.setItems(variable_Model);
 
+        Template_data template_data= new Template_data();
+        ArrayList<Template_Model> template_Arr = template_data.get_data_template();
+        ObservableList<Template_Model> template_model = FXCollections.observableArrayList(template_Arr);
+
+        //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
+        name_template_c.setCellValueFactory(new PropertyValueFactory<>("NameTemplate"));
+        name_template_c.setCellFactory(TextFieldTableCell.<Template_Model>forTableColumn());
+        spec_template_c.setCellValueFactory(new PropertyValueFactory<>("SpecTemplate"));
+        spec_template_c.setCellFactory(TextFieldTableCell.<Template_Model>forTableColumn());
+
+        //add your data to the table here.
+        template_table.setItems(template_model);
+
+
+
+        download_template_b.setOnAction(event -> {
+            if (template_table.getSelectionModel().getSelectedItem() == null){
+                Alert alert =new Alert(Alert.AlertType.WARNING , "Test");
+                alert.setTitle("Шаблон не выбран");
+                alert.setHeaderText("Необходимо выбрать шаблон!");
+                alert.setContentText("Выберите шаблон из списка и попробуйте снова.");
+                alert.showAndWait().ifPresent(rs -> {
+                    if (rs == ButtonType.OK){
+
+                    }
+
+                });
+                System.out.println("NOT_SELECTED CHABLON!");
+            } else {
+                Template_Model template_model_t = template_table.getSelectionModel().getSelectedItem();
+                String name_template=template_model_t.getCodeNameTemplate();
+                String html_code_template=template_model_t.getHtmlCodeTemplate();
+                Template_Controller template_controller =new Template_Controller();
+                template_controller.Download_template(name_template, html_code_template);
+            }
+
+        });
+
+        Generate_variables();
+
+    }
+
+    public void Generate_variables(){
+        if_html_extra.setWrapText(true);
+        if_excel_extra.setWrapText(true);
+        name_var_extr_t.textProperty().addListener((observable, oldValue, newValue) -> {
+            String name_var_extr=name_var_extr_t.getText();
+            if (name_var_extr.length()==0){
+                name_var_extr_t.setStyle("-fx-background-color: #FFF0F0;-fx-border-color: #DBB1B1;");
+                html_var_extra_t.setText("");
+                excel_var_extra_t.setText("");
+                if_html_extra.setText("");
+                if_excel_extra.setText("");
+            } else
+                {
+                    name_var_extr_t.setStyle("");
+                    html_var_extra_t.setText("${form."+name_var_extr+"!''}");
+                    excel_var_extra_t.setText("${form."+name_var_extr+"}");
+                    if_html_extra.setText("Пример с наличием контента:\n <#if form."+name_var_extr+"?has_content>Какое-то значение</#if>");
+                    if_excel_extra.setText("${form."+name_var_extr+" == 'Какое то значение или переменная' ? 'Значение'+form."+name_var_extr+" : ''}");
+                }
+        });
     }
 
 }

@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Справочник переменных");
         primaryStage.setScene(new Scene(root, 797, 724));
         primaryStage.show();
+        primaryStage.setResizable(false);
     }
 
 
