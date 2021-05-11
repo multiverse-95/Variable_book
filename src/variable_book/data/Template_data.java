@@ -1,9 +1,9 @@
-package data;
+package variable_book.data;
 
-import model.Template_Model;
+import variable_book.model.Template_Model;
 
 import java.util.ArrayList;
-
+// Класс в котором хранятся данные шаблонов
 public class Template_data {
 
     public ArrayList<Template_Model> get_data_template(){

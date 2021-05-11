@@ -1,7 +1,7 @@
-package model;
+package variable_book.model;
 
 import javafx.beans.property.SimpleStringProperty;
-
+// Модель для Шаблона
 public class Template_Model {
 
     private SimpleStringProperty NameTemplate;

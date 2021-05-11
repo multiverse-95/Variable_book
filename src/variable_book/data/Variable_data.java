@@ -1,9 +1,9 @@
-package data;
+package variable_book.data;
 
-import model.Variable_Model;
+import variable_book.model.Variable_Model;
 
 import java.util.ArrayList;
-
+// Класс в котором хранятся данные переменных
 public class Variable_data {
     public ArrayList<Variable_Model> get_data_var(){
         ArrayList<Variable_Model> variable_Arr =new ArrayList<Variable_Model>();
@@ -20,17 +20,17 @@ public class Variable_data {
 
         //Сведения о заявителе - физическом лице, в том числе индивидуальном предпринимателе
 
-        variable_Arr.add(new Variable_Model("Фамилия, имя, отчество (Физ лицо)",
+        variable_Arr.add(new Variable_Model("Фамилия, имя, отчество (Физ лицо)\nФИО физического лица",
                 "${order.requester.displayName!\"\"} \nИЛИ ${form.lastName!} ${form.firstName!} ${form.patronymic!} \nИЛИ ${order.requester.lastName!''} ${order.requester.firstName!''} ${order.requester.patronymic!''}"));
         variable_Arr.add(new Variable_Model("Дата рождения (Физ лицо)","${order.requester.birthDate!\"\"} \nИЛИ ${form.birthDate!}"));
         variable_Arr.add(new Variable_Model("Место рождения (Физ лицо)","${order.requester.birthPlace!\"\"} \nИЛИ ${form.birthPlace!}"));
-        variable_Arr.add(new Variable_Model("Документ, удостоверяющий личность (наименование и реквизиты) (Физ лицо)",
+        variable_Arr.add(new Variable_Model("Документ, удостоверяющий личность (наименование и реквизиты) (Физ лицо) \n(Паспорт, Свидетельство о рождении, водительские права и т.д.)",
                 "${order.requester.document.documentType.identityDocumentName!\"\"} ${order.requester.document.series!\"\"} ${order.requester.document.number!\"\"} ${order.requester.document.authority!\"\"} ${order.requester.document.dateOfIssue!\"\"} г. \nИЛИ номер и серия ${form.passportSeries!} ${form.passportNo!} выдан ${form.dateOfIssue!} ${form.authority!}"));
         variable_Arr.add(new Variable_Model("Адрес регистрации по месту жительства (месту пребывания) (Физ лицо)",
                 "${order.requester.registrationAddress!\"\"}  \nИЛИ  ${form.registrationAddress!}"));
         variable_Arr.add(new Variable_Model("Адрес места жительства (Физ лицо)","${form.residenceAddress!}"));
         variable_Arr.add(new Variable_Model("Телефон (Физ лицо)","${form.mobilePhone!} \nИЛИ ${form.phoneNumber!''}"));
-        variable_Arr.add(new Variable_Model("Email (Физ лицо)","${form.email!}"));
+        variable_Arr.add(new Variable_Model("Email (Физ лицо)\nЭлектронная почта физического лица","${form.email!}"));
         variable_Arr.add(new Variable_Model("ИНН (Физ лицо)","${order.requester.getInn()!\"\"}"));
         variable_Arr.add(new Variable_Model("СНИЛС (Физ лицо)","${order.requester.snils!\"\"} \nИЛИ ${form.snils!}"));
         variable_Arr.add(new Variable_Model("ОГРНИП (Физ лицо)",
@@ -51,16 +51,16 @@ public class Variable_data {
 
         // Сведения о представителе заявителя
 
-        variable_Arr.add(new Variable_Model("Фамилия, имя, отчество (при наличии) представителя заявителя",
+        variable_Arr.add(new Variable_Model("Фамилия, имя, отчество (при наличии) представителя заявителя\nФИО представителя заявителя",
                 "${form.additionalRequesters[0].declarant_representative_lastName!\"\"} \n ${form.additionalRequesters[0].declarant_representative_firstName!\"\"} \n ${form.additionalRequesters[0].declarant_representative_patronymic!\"\"}\n"));
-        variable_Arr.add(new Variable_Model("Документ, удостоверяющий личность (наименование документа и реквизиты документа) представителя заявителя ",
-                "\"<#if form.additionalRequesters[0].representative_check??> \n" +
+        variable_Arr.add(new Variable_Model("Документ, удостоверяющий личность (наименование документа и реквизиты документа) представителя заявителя \n(Паспорт, Свидетельство о рождении, водительские права и т.д.)",
+                "<#if form.additionalRequesters[0].representative_check??> \n" +
                         "    ${receiptStatics.declarantDocumentTypes[form.additionalRequesters[0].declarant_representative_documentType!'NULL']} ${form.additionalRequesters[0].declarant_representative_documentSeries!\"\"\"\"} ${form.additionalRequesters[0].declarant_representative_documentNumber!\"\"\"\"} ${form.additionalRequesters[0].declarant_representative_documentAuthority!\"\"\"\"} ${form.additionalRequesters[0].declarant_representative_dateOfIssue!\"\"\"\"}\n" +
-                        "   </#if>\"\n"));
-        variable_Arr.add(new Variable_Model("Документ, подтверждающий полномочия представителя заявителя (наименование документа и реквизиты документа)\n",
-                "\"<#if form.additionalRequesters[0].representative_check??> \n" +
+                        "   </#if>\n"));
+        variable_Arr.add(new Variable_Model("Документ, подтверждающий полномочия представителя заявителя (наименование документа и реквизиты документа)\n(Паспорт, Свидетельство о рождении, водительские права и т.д.)",
+                "<#if form.additionalRequesters[0].representative_check??> \n" +
                         "    ${form.additionalRequesters[0].declarant_representative_warrant_name} ${form.additionalRequesters[0].declarant_representative_warrant_number} ${form.additionalRequesters[0].declarant_representative_warrant_authority} ${form.additionalRequesters[0].declarant_representative_warrant_date}</font>\n" +
-                        "   </#if>\"\n"));
+                        "   </#if>\n"));
 
 
         return variable_Arr;
