@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -9,82 +10,139 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="724.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="variable_book.controller.appController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="750.0" minWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="variable_book.controller.appController">
    <children>
-      <TabPane prefHeight="724.0" prefWidth="797.0" stylesheets="@tabPane_style.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane stylesheets="@tabPane_style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Переменные">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #C0C0C0;">
-                     <children>
-                        <TextField fx:id="name_var_t" layoutX="191.0" layoutY="30.0" prefHeight="25.0" prefWidth="415.0" promptText="Введите название переменной" style="-fx-background-radius: 20;" />
-                        <Button fx:id="search_var_b" layoutX="630.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Поиск" />
-                        <TableView fx:id="var_table" editable="true" layoutX="10.0" layoutY="74.0" prefHeight="611.0" prefWidth="777.0">
-                          <columns>
-                            <TableColumn fx:id="name_var_c" editable="false" prefWidth="233.0" text="Имя переменной" />
-                            <TableColumn fx:id="value_var_c" prefWidth="543.0" text="Значение переменной" />
-                          </columns>
+                <BorderPane prefHeight="700.0" prefWidth="700.0">
+                    <top>
+                        <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50.0" minWidth="789.0" prefHeight="70.0" prefWidth="100.0" spacing="8.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                            <children>
+                                <TextField fx:id="name_var_t" layoutX="191.0" layoutY="30.0" prefHeight="25.0" prefWidth="415.0" promptText="Введите название переменной" style="-fx-background-radius: 20;" />
+                                <Button fx:id="search_var_b" layoutX="630.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Поиск" />
+                            </children>
+                            <padding>
+                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                            </padding>
+                        </HBox>
+
+                    </top>
+                    <center>
+                        <TableView fx:id="var_table" editable="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="70.0">
+                            <columns>
+                                <TableColumn fx:id="name_var_c" editable="false" prefWidth="233.0" text="Имя переменной" />
+                                <TableColumn fx:id="value_var_c" minWidth="550.0" text="Значение переменной" />
+                            </columns>
                         </TableView>
-                     </children>
-                  </AnchorPane>
+                    </center>
+                </BorderPane>
             </content>
           </Tab>
           <Tab text="Шаблоны">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #C0C0C0;">
-                     <children>
-                        <Button fx:id="download_template_b" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" style="-fx-background-radius: 20;" text="Скачать шаблон" />
-                        <TableView fx:id="template_table" layoutX="10.0" layoutY="51.0" prefHeight="630.0" prefWidth="777.0">
-                           <columns>
-                              <TableColumn fx:id="name_template_c" prefWidth="479.0" text="Название шаблона" />
-                              <TableColumn fx:id="spec_template_c" prefWidth="297.0" text="Особенность" />
-                           </columns>
+                <BorderPane prefHeight="700.0" prefWidth="700.0">
+                    <top>
+                        <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50.0" minWidth="789.0" prefHeight="70.0" prefWidth="100.0" spacing="8.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                            <children>
+                                <Button fx:id="download_template_b" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" style="-fx-background-radius: 20;" text="Скачать шаблон" />
+                                <TextField fx:id="template_var_t" prefHeight="25.0" prefWidth="411.0" promptText="Введите название шаблона" style="-fx-background-radius: 20;" />
+                                <Button fx:id="search_template_b" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Поиск" />
+
+                            </children>
+                            <padding>
+                                <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                            </padding>
+                        </HBox>
+                    </top>
+                    <center>
+                        <TableView fx:id="template_table" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="70.0">
+                            <columns>
+                                <TableColumn fx:id="name_template_c" prefWidth="479.0" text="Название шаблона" />
+                                <TableColumn fx:id="spec_template_c" prefWidth="297.0" text="Особенность" />
+                            </columns>
                         </TableView>
-                        <TextField fx:id="template_var_t" layoutX="193.0" layoutY="14.0" prefHeight="25.0" prefWidth="411.0" promptText="Введите название шаблона" style="-fx-background-radius: 20;" />
-                        <Button fx:id="search_template_b" layoutX="625.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 20;" text="Поиск" />
-                     </children></AnchorPane>
+                    </center>
+                </BorderPane>
             </content>
           </Tab>
             <Tab text="Дополнительно">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="352.0" layoutY="21.0" text="Имя переменной">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="name_var_extr_t" layoutX="147.0" layoutY="50.0" prefHeight="25.0" prefWidth="511.0" />
-                        <Label layoutX="342.0" layoutY="86.0" text="Переменная в Html">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="html_var_extra_t" layoutX="147.0" layoutY="115.0" prefHeight="25.0" prefWidth="511.0" />
-                        <Label layoutX="339.0" layoutY="149.0" text="Переменная в Excel">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="excel_var_extra_t" layoutX="147.0" layoutY="177.0" prefHeight="25.0" prefWidth="511.0" />
-                        <Label layoutX="147.0" layoutY="231.0" text="Условие в Html">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="if_html_extra" layoutX="47.0" layoutY="262.0" prefHeight="130.0" prefWidth="312.0" />
-                        <Label layoutX="537.0" layoutY="231.0" text="Условие в Excel">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <TextArea fx:id="if_excel_extra" layoutX="440.0" layoutY="262.0" prefHeight="130.0" prefWidth="312.0" />
-                     </children>
-                  </AnchorPane>
+                  <BorderPane prefHeight="700.0" prefWidth="700.0">
+                      <top>
+                          <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="50.0" minWidth="700.0" prefHeight="70.0" prefWidth="100.0" spacing="8.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                              <children>
+                                  <Label layoutX="352.0" layoutY="21.0" text="Имя переменной">
+                                      <font>
+                                          <Font name="Arial Rounded MT Bold" size="16.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="name_var_extr_t" layoutX="147.0" layoutY="50.0" prefHeight="25.0" prefWidth="700.0" />
+                                  <Label layoutX="342.0" layoutY="86.0" text="Переменная в Html">
+                                      <font>
+                                          <Font name="Arial Rounded MT Bold" size="16.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="html_var_extra_t" layoutX="147.0" layoutY="115.0" prefHeight="25.0" prefWidth="700.0" />
+                                  <Label layoutX="339.0" layoutY="149.0" text="Переменная в Excel">
+                                      <font>
+                                          <Font name="Arial Rounded MT Bold" size="16.0" />
+                                      </font>
+                                  </Label>
+                                  <TextField fx:id="excel_var_extra_t" layoutX="147.0" layoutY="177.0" prefHeight="25.0" prefWidth="511.0" />
+                              </children>
+                              <padding>
+                                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                              </padding>
+
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="130.0" minWidth="100.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                                  <children>
+
+                                      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="130.0" minWidth="100.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                                          <children>
+                                              <Label layoutX="147.0" layoutY="231.0" text="Условие в Html">
+                                                  <font>
+                                                      <Font name="Arial Rounded MT Bold" size="16.0" />
+                                                  </font>
+                                              </Label>
+                                              <TextArea fx:id="if_html_extra" layoutX="47.0" layoutY="262.0" prefHeight="130.0" prefWidth="312.0" />
+                                          </children>
+                                          <padding>
+                                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          </padding>
+                                      </VBox>
+                                      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="130.0" minWidth="100.0" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+                                          <children>
+                                              <Label layoutX="537.0" layoutY="231.0" text="Условие в Excel">
+                                                  <font>
+                                                      <Font name="Arial Rounded MT Bold" size="16.0" />
+                                                  </font>
+                                              </Label>
+                                              <TextArea fx:id="if_excel_extra" layoutX="440.0" layoutY="262.0" prefHeight="130.0" prefWidth="312.0" />
+                                          </children>
+                                          <padding>
+                                              <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                          </padding>
+                                      </VBox>
+                                  </children>
+                                  <padding>
+                                      <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                                  </padding>
+                              </HBox>
+                          </VBox>
+
+                      </top>
+
+                  </BorderPane>
               </content>
             </Tab>
+
         </tabs>
       </TabPane>
    </children>

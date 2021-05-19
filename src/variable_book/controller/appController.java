@@ -1,5 +1,6 @@
 package variable_book.controller;
 
+import javafx.scene.layout.HBox;
 import variable_book.controller.Template_Controller;
 import variable_book.data.Template_data;
 import variable_book.data.Variable_data;
